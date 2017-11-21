@@ -1,3 +1,35 @@
+How to use the SPDZ-2 pkg:
+==========================
+1) Write a new program titled "example.mpc" and place it in the Programs/Source folder.
+
+2) Compile it as ../SPDZ-2-master/compile.py example. (Note that you must run from one level above the root folder.
+
+3) Edit both the shell scripts for run-online.sh and setup-online.sh as below:
+SPDZROOT=/home/akannan/spdz2/SPDZ-2-master/Scripts/.. (CHANGE TO YOUR RESPECTIVE ROOT PATH)
+
+4) If this isn't done, the shell scripts should also be run from one level above the root as ../SPDZ-2-master/Scripts/run-online.sh
+
+5) If step 3 is done, run the setup script for the offline phase as Scripts/setup-online.sh.
+(This sets up parameters for the online phase for 2 parties with a default value of 128-bit finite field and 40-bit binary field, 
+and creates offline data (multiplication triples etc.) for these parameters.)
+
+6) Then run the online stage as Scripts/run-online.sh example
+(This runs the online stage for 2 players, by default, on the same machine).
+
+To increase the modulus size being used:
+========================================
+Max mod size = (len(p) / 64 (for 64 bits)) + 1
+1) Set the MAX_MOD_SZ flag to 20 in CONFIG and make clean and make again. (Max supported mod size is 512 as per Setup.cpp)
+
+2) Change both setup-online.sh and run-online.sh to generate 512 bit field length.
+
+Other updates:
+==============
+1) mult.mpc has been added to multiply 20000 numbers. If this number is changed the script should be    	recompiled as in Step 2 above.
+2) run-online.sh has been changed to allow running any script 'NTrials' number of times. 
+   To run the script, change NTrials to the required number of iterations and execute as in Step 6 above.
+3) The average time for stated number of iterations will be displayed.
+
 (C) 2017 University of Bristol. See License.txt
 
 Software for the SPDZ and MASCOT secure multi-party computation protocols.
