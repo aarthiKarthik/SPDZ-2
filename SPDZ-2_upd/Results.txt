@@ -1,0 +1,6 @@
+
+Results of multiplying numbers over FF over p 512 and 2 players:
+(Online phase run on VM with both players on same VM instance)
+
+10005 mults: .0079384514 seconds (avged over 100 iterations)
+20000 mults: .0129717367 seconds (avged over 100 iterations)
